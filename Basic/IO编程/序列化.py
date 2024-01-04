@@ -51,16 +51,16 @@ def student2dict(std):
         'score': std.score
     }
 
+
 def dict2student(std):
     return Student(name=std['name'], age=std['age'], score=std['score'])
+
+
+# lambda表达式
 # std_data = json.dumps(s, default=lambda obj: obj.__dict__)
-std_data = json.dumps(s, default = student2dict)
+std_data = json.dumps(s, default=student2dict)
 print('Dump Student:', std_data)
 
-
-
-
-
 # rebuild = json.loads(std_data, object_hook=lambda d: Student(d['name'], d['age'], d['score']))
-rebuild = json.loads(std_data, object_hook= dict2student)
+rebuild = json.loads(std_data, object_hook=dict2student)
 print(rebuild)
