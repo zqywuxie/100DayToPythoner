@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--宏，类似于代码封装成方法，代码复用-->
+{% macro input() %}
+<input type="text" value="123" size="40">
+{%endmacro%}
+<!--像普通方法一样的编写-->
+{% macro input1(type="text",value="",size="20") %}
+<input type="{{type}}" value="{{value}}" size="{{size}}">
+{%endmacro%}
+
+<h1>
+    带参数模板
+</h1>
+{{input()}}
+{{input1("submit","提交")}}
+
+<!--引入外部模板-->
+{% import "macro_input.html" as mainput %}
+
+<h1>外部引入</h1>
+
+{{mainput.input1("submit","外部引入")}}
+</body>
+</html>
